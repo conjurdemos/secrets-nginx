@@ -9,6 +9,8 @@ fi
 ln -sf /vagrant/nginx.conf /usr/local/nginx/conf/nginx.conf
 service nginx restart
 
+cp /vagrant/.netrc /root
+
 su vagrant
 curl -L https://get.rvm.io | bash
 source ~/.rvm/scripts/rvm
