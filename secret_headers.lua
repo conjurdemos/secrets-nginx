@@ -1,7 +1,7 @@
 -- just use a global table as a namespace so it's available in all handlers
-shared_headers = {}
+secret_headers = {}
 
-function shared_headers.init()
+function secret_headers.init()
   -- check our shared memory to see if we've already loaded the variable id
   if ngx.shared.conjur:get("variable_id") then return end
   -- if not then read it from a file
@@ -13,7 +13,7 @@ function shared_headers.init()
   ngx.shared.conjur:set("variable_id", variable_id)
 end
 
-function shared_headers.rewrite()
+function secret_headers.rewrite()
   -- check to see if we have a fresh cached value for the variable
   local shared = ngx.shared.conjur
   local value = shared:get("variable_value")
